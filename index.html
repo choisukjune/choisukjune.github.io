@@ -4,19 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>최석준 · Product Owner</title>
-<meta name="description" content="기획하고, 직접 만들고, 운영합니다. 바이브코딩 IDE Arkain, 문서 도구 INDIFF.">
+<meta name="description" content="최석준 — Product Owner. AI 개발 도구와 에듀테크 제품을 기획하고, 필요하면 직접 만듭니다.">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
 <style>
-  /* Less, but better.
-     색은 흰 · 회색 · 검정뿐. 글꼴 하나, 크기 여섯(12 · 14 · 16 · 22 · 32 · 제목), 굵기 셋(400 · 500 · 600).
-     12단 격자 — 이름표는 왼쪽 3단, 내용은 오른쪽 9단. 간격은 8의 배수. */
+  /* Less, but better. 흰 · 회색 · 검정, 글꼴 하나, 12단 격자. 화면은 사이트, 인쇄하면 이력서. */
   :root {
-    --paper: #ffffff;
-    --panel: #f2f2f1;
-    --ink: #111111;
-    --ink-2: #555555;
-    --ink-3: #999999;
-    --rule: #dddddd;
+    --paper: #ffffff; --panel: #f2f2f1; --ink: #111111; --ink-2: #555555; --ink-3: #999999; --rule: #dddddd;
     --sans: "Pretendard Variable", Pretendard, -apple-system, system-ui, sans-serif;
     --gut: clamp(16px, 4vw, 48px);
   }
@@ -26,156 +19,167 @@
   :root[data-theme="dark"] { --paper: #111111; --panel: #1b1b1b; --ink: #ececec; --ink-2: #a6a6a6; --ink-3: #6a6a6a; --rule: #2c2c2c; }
 
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   body {
     margin: 0; background: var(--paper); color: var(--ink);
-    font-family: var(--sans); font-size: 16px; font-weight: 400;
-    line-height: 1.7; letter-spacing: -.012em;
-    word-break: keep-all; -webkit-font-smoothing: antialiased;
-    font-feature-settings: "tnum";
+    font-family: var(--sans); font-size: 15px; line-height: 1.7; letter-spacing: -.012em;
+    word-break: keep-all; -webkit-font-smoothing: antialiased; font-feature-settings: "tnum";
   }
-  h1, h2, h3, p, ol, ul, dl, dd { margin: 0; padding: 0; }
-  ol, ul { list-style: none; }
+  h1, h2, h3, p, ul, dl, dd { margin: 0; padding: 0; }
+  ul { list-style: none; }
   h1, h2, h3 { font-weight: 500; text-wrap: balance; }
   p, li, dd { text-wrap: pretty; }
   a { color: inherit; text-decoration: underline; text-decoration-color: var(--rule); text-decoration-thickness: 1px; text-underline-offset: 4px; }
   a:hover { text-decoration-color: var(--ink); }
-  a:focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; }
+  a:focus-visible, button:focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; }
 
   .wrap { max-width: 1200px; margin: 0 auto; padding: 0 var(--gut); }
   .grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; }
-  .lab { grid-column: 1 / span 3; font-size: 14px; color: var(--ink-3); line-height: 1.6; }
-  .body { grid-column: 4 / span 9; }
-  .muted { color: var(--ink-2); }
-  .todo { color: var(--ink-3); border-bottom: 1px dashed var(--ink-3); }
 
-  /* ── 머리 ─────────────────────────────────── */
   .top { border-bottom: 1px solid var(--rule); }
   .top .grid { height: 56px; align-items: center; font-size: 14px; }
   .top .name { grid-column: 1 / span 3; font-weight: 500; text-decoration: none; }
   .top .role { grid-column: 4 / span 5; color: var(--ink-3); }
-  .top nav { grid-column: 9 / span 4; justify-self: end; display: flex; gap: 24px; }
-  .top nav a { text-decoration: none; color: var(--ink-2); }
-  .top nav a:hover { color: var(--ink); }
+  .top .act { grid-column: 9 / span 4; justify-self: end; display: flex; gap: 24px; }
+  .top .act a, .top .act button { color: var(--ink-2); text-decoration: none; font: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+  .top .act a:hover, .top .act button:hover { color: var(--ink); }
 
-  /* ── 소개 ─────────────────────────────────── */
-  .intro { padding: 136px 0 96px; }
-  .intro h1 {
-    font-size: clamp(36px, 5vw, 64px); line-height: 1.18; letter-spacing: -.035em;
-    margin-bottom: 32px;
-  }
-  .intro .lede { font-size: 22px; line-height: 1.6; letter-spacing: -.025em; color: var(--ink-2); max-width: 30em; }
+  .head { padding: 112px 0 72px; }
+  .head .lab { grid-column: 1 / span 3; font-size: 14px; color: var(--ink-3); }
+  .head .body { grid-column: 4 / span 9; }
+  .head h1 { font-size: clamp(32px, 4.2vw, 52px); line-height: 1.2; letter-spacing: -.035em; }
+  .head .sub + .sub { margin-top: 16px; }
+  .head .sub { font-size: 20px; line-height: 1.6; letter-spacing: -.025em; color: var(--ink-2); margin-top: 24px; max-width: 32em; }
+  .head .contact { margin-top: 32px; font-size: 14px; display: flex; flex-wrap: wrap; gap: 6px 24px; }
 
-  /* 제원표 — 제품 설명서처럼 */
-  .spec { margin-top: 72px; border-top: 1px solid var(--ink); }
-  .spec > div { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); column-gap: 24px; padding: 12px 0; border-bottom: 1px solid var(--rule); font-size: 14px; }
-  .spec dt { color: var(--ink-3); }
-  .spec dd { color: var(--ink); }
-
-  /* ── 구획 공통 ─────────────────────────────── */
-  section.s { padding: 96px 0 0; }
-  .s-h { border-top: 1px solid var(--ink); padding-top: 12px; margin-bottom: 40px; }
-  .s-h h2 { grid-column: 1 / span 3; font-size: 14px; font-weight: 500; }
+  section { padding-top: 72px; }
+  .s-h { border-top: 1px solid var(--ink); padding-top: 12px; margin-bottom: 32px; }
+  .s-h h2 { grid-column: 1 / span 3; font-size: 14px; }
   .s-h p { grid-column: 4 / span 9; font-size: 14px; color: var(--ink-3); }
+  .col { grid-column: 4 / span 9; }
 
-  /* 최근 작업 — 두 칸 */
+  .summary li { padding: 12px 0; border-top: 1px solid var(--rule); font-size: 16px; line-height: 1.65; letter-spacing: -.02em; }
+  .summary li:last-child { border-bottom: 1px solid var(--rule); }
+  .summary b { font-weight: 500; }
+  .summary span { color: var(--ink-2); }
+
+  .figs { background: var(--panel); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .figs > div { padding: 24px 20px 20px; display: flex; flex-direction: column; justify-content: space-between; min-height: 150px; }
+  .figs > div + div { border-left: 1px solid var(--paper); }
+  .figs b { font-size: clamp(30px, 3.2vw, 40px); font-weight: 400; letter-spacing: -.04em; line-height: 1; }
+  .figs span { font-size: 13px; color: var(--ink-2); line-height: 1.5; margin-top: 20px; }
+  .note { font-size: 13px; color: var(--ink-3); margin-top: 10px; }
+
+  .how li { padding: 16px 0 20px; border-top: 1px solid var(--rule); }
+  .how li:last-child { border-bottom: 1px solid var(--rule); }
+  .how h3 { font-size: 16px; letter-spacing: -.025em; }
+  .how p { color: var(--ink-2); margin-top: 6px; max-width: 46em; }
+
+  .job { padding: 24px 0 28px; border-top: 1px solid var(--rule); row-gap: 4px; }
+  .job:last-child { border-bottom: 1px solid var(--rule); }
+  .job .when { grid-column: 1 / span 3; font-size: 14px; color: var(--ink-3); padding-top: 3px; }
+  .job .main { grid-column: 4 / span 9; }
+  .job h3 { font-size: 20px; letter-spacing: -.03em; line-height: 1.4; }
+  .job h3 small { font-size: 14px; font-weight: 400; color: var(--ink-3); margin-left: 10px; letter-spacing: -.01em; }
+  .job ul { margin-top: 12px; display: grid; gap: 6px; }
+  .job li { position: relative; padding-left: 16px; color: var(--ink-2); line-height: 1.7; }
+  .job li::before { content: ""; position: absolute; left: 0; top: .78em; width: 6px; height: 1px; background: var(--ink-3); }
+  .job li b { font-weight: 500; color: var(--ink); }
+
+  .side { padding: 16px 0 20px; border-top: 1px solid var(--rule); }
+  .side:last-child { border-bottom: 1px solid var(--rule); }
+  .side h3 { grid-column: 1 / span 3; font-size: 14px; color: var(--ink-3); font-weight: 400; }
+  .side div { grid-column: 4 / span 9; }
+  .side li { color: var(--ink-2); }
+  .side li + li { margin-top: 4px; }
+
+  /* 최근 작업 */
   .recent { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
-  .recent article { border-top: 1px solid var(--rule); padding-top: 20px; display: flex; flex-direction: column; }
-  .recent .k { font-size: 14px; color: var(--ink-3); }
-  .recent h3 { font-size: 32px; line-height: 1.25; letter-spacing: -.035em; margin-top: 24px; }
-  .recent .sub { font-size: 16px; color: var(--ink-2); margin-top: 4px; letter-spacing: -.02em; }
-  .recent .d { font-size: 15px; line-height: 1.75; color: var(--ink-2); margin: 20px 0 24px; letter-spacing: -.015em; max-width: 30em; }
+  .recent article { border-top: 1px solid var(--rule); padding: 16px 0 8px; display: flex; flex-direction: column; }
+  .recent .lead { grid-column: 1 / -1; padding-bottom: 24px; }
+  .recent .lead + .lead { margin-top: 8px; }
+  .recent .k { font-size: 13px; color: var(--ink-3); }
+  .recent h3 { font-size: 26px; line-height: 1.25; letter-spacing: -.035em; margin-top: 16px; }
+  .recent .lead h3 { font-size: 32px; }
+  .recent .sub { font-size: 15px; color: var(--ink-2); margin-top: 2px; letter-spacing: -.02em; }
+  .recent .d { color: var(--ink-2); margin: 14px 0 16px; max-width: 46em; }
   .recent a { font-size: 14px; margin-top: auto; align-self: flex-start; }
 
-  .recent .lead { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 4fr); gap: 24px; padding-bottom: 32px; flex-direction: initial; }
-  .recent .lead > div { display: flex; flex-direction: column; }
-  .recent .lead h3 { font-size: 40px; }
-  .recent .lead .d { margin-bottom: 12px; }
-  .recent .d2 { font-size: 14px; color: var(--ink-3); line-height: 1.7; margin-bottom: 24px; }
-  .kv { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); background: var(--panel); align-self: start; margin-top: 44px; }
-  .kv > div { padding: 20px 20px 18px; }
-  .kv > div:nth-child(even) { border-left: 1px solid var(--paper); }
-  .kv > div:nth-child(n+3) { border-top: 1px solid var(--paper); }
-  .kv dt { font-size: 13px; color: var(--ink-3); }
-  .kv dd { font-size: 32px; letter-spacing: -.035em; line-height: 1.2; margin-top: 16px; }
-  .kv span { font-size: 13px; color: var(--ink-2); }
-
   /* 관심 — 짧은 글 */
-  .essay { display: grid; gap: 20px; max-width: 33em; }
-  .essay p { font-size: 17px; line-height: 1.85; letter-spacing: -.02em; color: var(--ink); }
+  .essay { display: grid; gap: 16px; max-width: 36em; }
+  .essay p { font-size: 16px; line-height: 1.85; letter-spacing: -.02em; }
 
-  /* 수치 — 회색 판 위 네 칸 */
-  .figs { background: var(--panel); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  .figs > div { padding: 32px 24px 28px; display: flex; flex-direction: column; justify-content: space-between; min-height: 176px; }
-  .figs > div + div { border-left: 1px solid var(--paper); }
-  .figs b { font-size: clamp(36px, 4.2vw, 52px); font-weight: 400; letter-spacing: -.04em; line-height: 1; }
-  .figs span { font-size: 14px; color: var(--ink-2); line-height: 1.5; margin-top: 24px; }
-
-  /* 작업 — 한 줄에 하나 */
-  .work li { padding: 32px 0; border-top: 1px solid var(--rule); row-gap: 8px; }
-  .work li:last-child { border-bottom: 1px solid var(--rule); }
-  .work .meta { grid-column: 1 / span 3; font-size: 14px; line-height: 1.6; color: var(--ink-3); display: grid; align-content: start; }
-  .work .meta b { font-weight: 400; color: var(--ink-2); }
-  .work h3 { grid-column: 4 / span 4; font-size: 22px; line-height: 1.35; letter-spacing: -.03em; }
-  .work h3 small { display: block; font-size: 14px; font-weight: 400; color: var(--ink-3); letter-spacing: -.01em; margin-top: 4px; }
-  .work .d { grid-column: 8 / span 5; font-size: 15px; line-height: 1.75; color: var(--ink-2); }
-  .work .d .v { display: block; margin-top: 12px; color: var(--ink); font-size: 14px; }
-  .work .d a { font-size: 14px; color: var(--ink); }
-
-  /* 기획 · 개발 · 사업 */
-  .range-wrap { grid-column: 4 / span 9; overflow-x: auto; }
-  .range { width: 100%; min-width: 420px; border-collapse: collapse; font-size: 14px; }
-  .range th { text-align: left; font-weight: 400; color: var(--ink-3); padding: 0 0 10px; border-bottom: 1px solid var(--ink); }
-  .range td { padding: 10px 0; border-bottom: 1px solid var(--rule); }
-  .range .y { width: 72px; color: var(--ink-2); }
-  .range .m, .range th.m { width: 72px; text-align: center; }
-  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--ink); vertical-align: 1px; }
-  .dot.part { background: transparent; box-shadow: inset 0 0 0 1px var(--ink); }
-  .range-note { grid-column: 4 / span 9; font-size: 14px; color: var(--ink-3); margin-top: 16px; }
-
-  /* 경력 — 표처럼 */
-  .career li { padding: 16px 0; border-top: 1px solid var(--rule); font-size: 15px; line-height: 1.7; }
-  .career li:last-child { border-bottom: 1px solid var(--rule); }
-  .career .when { grid-column: 1 / span 3; color: var(--ink-3); font-size: 14px; padding-top: 1px; }
-  .career .co { grid-column: 4 / span 3; font-weight: 500; letter-spacing: -.02em; }
-  .career .d { grid-column: 7 / span 6; color: var(--ink-2); }
-
-  /* 방식 */
-  .how { grid-column: 4 / span 9; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
-  .how li { border-top: 1px solid var(--rule); padding-top: 16px; }
-  .how h3 { font-size: 16px; letter-spacing: -.02em; line-height: 1.5; }
-  .how p { font-size: 14px; color: var(--ink-2); margin-top: 6px; line-height: 1.7; }
-
-  /* ── 끝 ───────────────────────────────────── */
-  footer { margin-top: 160px; }
-  footer .grid { padding-top: 12px; padding-bottom: 48px; font-size: 14px; row-gap: 8px; }
+  footer { margin-top: 120px; }
   footer .line { border-top: 1px solid var(--ink); }
+  footer .grid { padding-top: 12px; padding-bottom: 48px; font-size: 14px; }
   footer .k { grid-column: 1 / span 3; color: var(--ink-3); }
   footer .v { grid-column: 4 / span 9; display: flex; flex-wrap: wrap; gap: 8px 32px; }
 
-  /* ── 좁은 화면: 이름표를 내용 위로 ─────────────── */
   @media (max-width: 860px) {
     .grid { grid-template-columns: minmax(0, 1fr); }
-    .lab, .body, .top .name, .s-h h2, .s-h p, .work .meta, .work h3, .work .d,
-    .range-wrap, .range-note, .career .when, .career .co, .career .d, .how, footer .k, footer .v { grid-column: 1; }
+    .top .name, .head .lab, .head .body, .s-h h2, .s-h p, .col, .job .when, .job .main, .side h3, .side div, footer .k, footer .v { grid-column: 1; }
     .top .grid { grid-template-columns: auto 1fr; height: 52px; }
     .top .role { display: none; }
-    .top nav { grid-column: 2; gap: 16px; }
-    .intro { padding: 72px 0 64px; }
-    .intro .lede { font-size: 18px; }
-    .spec { margin-top: 48px; }
-    .s-h p { margin-top: 2px; }
+    .top .act { grid-column: 2; gap: 16px; }
+    .head { padding: 64px 0 48px; }
+    .head .lab { margin-bottom: 8px; }
+    .head .sub { font-size: 17px; }
     .figs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .figs > div { min-height: 140px; padding: 24px 16px 20px; }
     .figs > div:nth-child(3) { border-left: 0; }
     .figs > div:nth-child(n+3) { border-top: 1px solid var(--paper); }
-    .how, .recent { grid-template-columns: minmax(0, 1fr); }
-    .recent { gap: 40px; }
-    .recent .lead { grid-template-columns: minmax(0, 1fr); padding-bottom: 0; }
-    .kv { margin-top: 8px; }
-    .career .when { padding-top: 0; }
-    footer { margin-top: 112px; }
+    .job .when { padding-top: 0; }
+    .recent { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  }
+
+  /* 인쇄 · PDF — 메뉴를 빼고 A4에 맞춘다 */
+  @page { size: A4; margin: 16mm 14mm; }
+  @media print {
+    :root { --paper: #fff; --panel: #f2f2f1; --ink: #000; --ink-2: #333; --ink-3: #777; --rule: #ccc; }
+    body { font-size: 9.5pt; line-height: 1.6; }
+    .top, footer .print-hide { display: none; }
+    .wrap { max-width: none; padding: 0; }
+    .grid { column-gap: 12px; }
+    .head { padding: 0 0 18px; }
+    .head h1 { font-size: 20pt; }
+    .head .sub { font-size: 11pt; margin-top: 8px; }
+    .head .contact { margin-top: 10px; font-size: 9pt; }
+    section { padding-top: 16px; }
+    .s-h { margin-bottom: 10px; padding-top: 6px; }
+    .s-h h2, .s-h p { font-size: 9pt; }
+    .summary li { font-size: 10pt; padding: 5px 0; }
+    .figs > div { min-height: 0; padding: 10px 10px 8px; }
+    .figs b { font-size: 16pt; }
+    .figs span { font-size: 8pt; margin-top: 6px; }
+    .job { padding: 10px 0 12px; break-inside: avoid; }
+    .job h3 { font-size: 12pt; }
+    .job ul { margin-top: 4px; gap: 1px; }
+    .how li, .side { padding: 6px 0 8px; break-inside: avoid; }
+    footer { margin-top: 24px; }
+    footer .grid { padding-bottom: 0; }
+    a { text-decoration: none; }
+    /* 종이 폭이 좁아도 두 단 격자를 유지한다 */
+    .grid { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+    .head .lab, .s-h h2, .job .when, .side h3, footer .k { grid-column: 1 / span 2; }
+    .head .body, .s-h p, .col, .job .main, .side div, footer .v { grid-column: 3 / span 10; }
+    .head .lab { margin-bottom: 0; }
+    .job .when { padding-top: 2px; }
+    .figs { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .figs > div:nth-child(3) { border-left: 1px solid var(--paper); }
+    .figs > div:nth-child(n+3) { border-top: 0; }
+    .how li { padding: 5px 0 7px; }
+    .how p { margin-top: 2px; }
+    .summary li { padding: 4px 0; }
+    section { padding-top: 12px; }
+    .career-s { padding-top: 12px; }
+    .recent { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 12px; }
+    .essay, .side, .how li { break-inside: avoid; }
+    .recent article { padding: 6px 0 4px; break-inside: avoid; }
+    .recent h3, .recent .lead h3 { font-size: 13pt; margin-top: 4px; }
+    .recent .sub { font-size: 9pt; }
+    .recent .d { margin: 4px 0 4px; }
+    .recent a { font-size: 8.5pt; }
+    .essay { gap: 4px; }
+    .essay p { font-size: 9.5pt; line-height: 1.65; }
+    .s-h { break-after: avoid; }
   }
 </style>
 </head>
@@ -185,62 +189,84 @@
   <div class="wrap grid">
     <a class="name" href="#top">최석준</a>
     <span class="role">Product Owner, (주)구름</span>
-    <nav aria-label="주 메뉴"><a href="#work">작업</a><a href="#career">경력</a><a href="#contact">연락</a></nav>
+    <div class="act"><a href="#work">작업</a><a href="#career">경력</a><button type="button" onclick="window.print()">PDF로 저장</button></div>
   </div>
 </header>
 
 <main id="top">
-  <section class="intro">
+  <div class="head">
     <div class="wrap grid">
-      <p class="lab">소개</p>
+      <p class="lab">이력서</p>
       <div class="body">
-        <h1>만들 줄 아는 PO.</h1>
-        <p class="lede">기획하고, 직접 만들고, 운영합니다. 지금은 구름에서 바이브코딩 IDE Arkain을 맡고 있고, 혼자서는 AI로 작은 서비스들을 만듭니다.</p>
+        <h1>최석준 — Product Owner</h1>
+        <p class="sub">처음 맡은 일은 쇼핑몰에 상품을 올리는 것이었습니다. 별로 대단할 것 없는 일이었습니다. 사진을 고르고, 설명을 쓰고, 가격을 매겼습니다. 그런데 같은 물건이 다른 곳에서는 얼마에 팔리는지가 이상하게 신경 쓰였습니다. 그게 궁금해서 프로그램을 짰고, 한참 뒤에는 타오바오와 아마존을 실시간으로 뒤지는 검색엔진을 만들고 있었습니다. 그렇게 모인 데이터가 2년 치쯤 쌓이자 이번에는 그걸 읽어 낼 분석 시스템이 필요해졌고, 그 일도 제가 맡게 되었습니다.</p>
+        <p class="sub">그 뒤로도 대체로 비슷했습니다. 비투링크에서는 국내 뷰티 브랜드 가운데 될 만한 것을 골라 여러 나라에 자리 잡게 하는 일을 했습니다. 한 번 보내는 것과 끊기지 않고 계속 보내는 것은 꽤 다른 일이어서, 그 사이를 잇는 SCM을 기획하고 운영하는 일을 맡았습니다. 베트남 수출을 맡던 무렵에는 국내 쿠팡 운영에 드는 손을 덜어 보려고 자동화 도구를 만들었습니다. 일이 막히면 프로그램을 짰고, 그 프로그램은 또 다른 일로 이어졌습니다. 지금은 (주)구름에서 AI 개발 도구와 에듀테크 제품을 만들고 있습니다. 하는 일의 모양은 그때와 크게 다르지 않습니다. 다루는 문제가 조금 커졌을 뿐입니다.</p>
+        <p class="contact"><a href="mailto:12k4@naver.com">12k4@naver.com</a><a href="https://github.com/choisukjune">github.com/choisukjune</a><a href="https://choisukjune.github.io/">choisukjune.github.io</a></p>
+      </div>
+    </div>
+  </div>
 
-        <dl class="spec">
-          <div><dt>역할</dt><dd>제품 기획(PO) · 프로젝트 관리 · 시스템 개발 · 사업 운영</dd></div>
-          <div><dt>지금</dt><dd>(주)구름 — Arkain, 구름IDE</dd></div>
-          <div><dt>도구</dt><dd>LLM(GPT, Claude) · Claude Code · Node.js · Python · AWS · MongoDB · MySQL</dd></div>
-          <div><dt>영역</dt><dd>SaaS · 에듀테크 · 이커머스 · 크로스보더</dd></div>
-          <div><dt>연락</dt><dd><a href="mailto:12k4@naver.com">12k4@naver.com</a></dd></div>
-        </dl>
+  <section>
+    <div class="wrap">
+      <div class="s-h grid"><h2>요약</h2><p></p></div>
+      <div class="grid">
+        <ul class="summary col">
+          <li><b>AI 제품을 기획하고 시장에 내놓았습니다.</b> <span>바이브코딩 IDE Arkain 기획부터 런칭까지 주도.</span></li>
+          <li><b>필요하면 직접 만듭니다.</b> <span>하루 30만 건 크롤링과 빅데이터 분석 시스템, 쿠팡 운영 자동화, B2B 플랫폼 API 서버.</span></li>
+          <li><b>사업을 키웠습니다.</b> <span>국내 뷰티 브랜드의 해외 랜딩과 SCM 기획 · 운영, 중국(10개 이상 플랫폼) · 베트남 진출 실행과 총괄.</span></li>
+          <li><b>큰 조직과 함께 일했습니다.</b> <span>카카오 그룹 다부문 협력 PM, LG전자 · 일본 사이버대학 B2B, 정부사업 디지털새싹 수주.</span></li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <section class="s" id="recent">
+  <section>
     <div class="wrap">
-      <div class="s-h grid"><h2>최근 작업</h2><p>AI로 만든 것. 수치는 Arkain 서비스 소개서 기준.</p></div>
+      <div class="s-h grid"><h2>수치</h2><p>세어 볼 수 있는 것만 적었습니다.</p></div>
       <div class="grid">
-        <div class="body recent">
+        <div class="col">
+          <div class="figs">
+            <div><b>192만</b><span>Arkain 사용자 · 157개국</span></div>
+            <div><b>69%</b><span>Arkain 해외 사용자 비중</span></div>
+            <div><b>30만</b><span>하루 상품 수집 · 가격비교 검색엔진</span></div>
+            <div><b>10+</b><span>운영한 중국 플랫폼 · skin1004</span></div>
+          </div>
+          <p class="note">Arkain 수치는 Arkain 서비스 소개서 기준.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="s-h grid"><h2>최근 작업</h2><p>요즘 하고 있는 일.</p></div>
+      <div class="grid">
+        <div class="col recent">
           <article class="lead">
-            <div>
-              <p class="k">AI 클라우드 IDE · 구름 · 2022 –</p>
-              <h3>Arkain</h3>
-              <p class="sub">설치 없이 브라우저에서, 프롬프트 한 줄로 앱까지</p>
-              <p class="d">설치가 필요 없는 AI 클라우드 IDE입니다. 자연어로 앱을 만드는 에이전트 Arkain Snap, 개발 화면 안의 Side Chat, 프로젝트 맥락을 읽고 답을 다듬는 AI Supporter, 실시간 자동 완성 Code Supporter를 한 컨테이너 위에 묶었습니다. Cursor · Lovable · Replit을 뜯어보고 방향을 정해 기획부터 런칭까지 맡았습니다.</p>
-              <p class="d2">기업용으로는 사내 LLM 연동, 구축형 설치, GPU 컨테이너를 지원합니다.</p>
-              <a href="https://arkain.io">arkain.io</a>
-            </div>
-            <dl class="kv">
-              <div><dt>사용자</dt><dd>192만</dd><span>157개국</span></div>
-              <div><dt>해외 비중</dt><dd>69%</dd><span>글로벌 사용자</span></div>
-              <div><dt>누적 컨테이너</dt><dd>939,227</dd><span>진행된 프로젝트</span></div>
-              <div><dt>언어 템플릿</dt><dd>38</dd><span>종</span></div>
-            </dl>
+            <p class="k">사내 AI 플랫폼 · (주)구름</p>
+            <h3>TokenHub</h3>
+            <p class="sub">사내 표준 AI 게이트웨이와 작업 실행 플랫폼</p>
+            <p class="d">회사 안의 팀들이 저마다 AI를 따로 붙이고 있었습니다. 키도 비용도 제각각이었고, 누가 얼마나 쓰는지 아무도 몰랐습니다. 그래서 문을 하나로 모았습니다. 접속 주소 한 줄만 바꾸면 인증 · 보안 · 비용 관리가 따라오고, 프롬프트는 배포 없이 콘솔에서 고칩니다. 오래 걸리는 채점이나 긴 문서 분석은 그 위의 TokenHub Agents가 맡습니다. 구름 코딩테스트의 AI 튜터와 자동 채점이 지금 여기서 돌아갑니다.</p>
+          </article>
+          <article class="lead">
+            <p class="k">AI 클라우드 IDE · (주)구름 · 2022 –</p>
+            <h3>Arkain</h3>
+            <p class="sub">바이브코딩 IDE</p>
+            <p class="d">브라우저만 있으면 열리는 IDE입니다. 하고 싶은 걸 말로 적으면 Arkain Snap이 앱을 만들어 주고, 막히면 옆의 Side Chat에 물어보면 됩니다. 기획부터 런칭까지 맡았습니다. 기업 고객을 위해서는 사내 LLM 연동과 구축형 설치, GPU 컨테이너를 지원했습니다.</p>
+            <a href="https://arkain.io">arkain.io</a>
           </article>
           <article>
-            <p class="k">macOS 앱 · 2026</p>
+            <p class="k">macOS 앱 · 개인 · 2026</p>
             <h3>INDIFF</h3>
-            <p class="sub">문서 · 편집기 · 터미널을 한 창에</p>
-            <p class="d">한글 · 엑셀 · PDF를 변환 없이 열고, 고친 곳만 저장합니다. Claude Code가 지금 열어 둔 폴더에서 바로 일합니다. 혼자 설계하고 만들어 배포했습니다.</p>
+            <p class="sub">문서와 터미널을 한 창에서</p>
+            <p class="d">한글이나 엑셀이나 PDF를 변환하지 않고 그대로 엽니다. 고친 곳만 저장하고, 옆에 열어 둔 Claude Code가 같은 폴더에서 바로 일합니다. 문서 때문에 귀찮았던 일들을 하나씩 없애다 보니 앱이 되었습니다. 혼자 만들고 있습니다.</p>
             <a href="https://choisukjune.github.io/indiff-app/">choisukjune.github.io/indiff-app</a>
           </article>
           <article>
-            <p class="k">웹 서비스 · 2026</p>
+            <p class="k">웹 서비스 · 개인 · 2026</p>
             <h3>무경 巫經</h3>
             <p class="sub">AI 사주 서비스</p>
-            <p class="d">1931년 무당이 남긴 기록을 복원한다는 설정의 사주 서비스입니다. 생년월일을 넣으면 그 사람 몫의 기록이 한 장씩 판독되어 열립니다. 한국어 · 영어 · 일본어.</p>
+            <p class="d">1931년 어느 무당이 남긴 기록을 복원하고 있다는 설정의 사주 서비스입니다. 생년월일을 넣으면 그 사람 몫의 기록이 한 장씩 판독되어 나옵니다. 조금 별나다는 건 저도 압니다. 한국어, 영어, 일본어로 읽을 수 있습니다.</p>
             <a href="https://www.earaarchive.org/">earaarchive.org</a>
           </article>
         </div>
@@ -248,123 +274,123 @@
     </div>
   </section>
 
-  <section class="s" id="likes">
+  <section>
     <div class="wrap">
-      <div class="s-h grid"><h2>관심</h2><p>요즘 붙잡고 있는 것.</p></div>
+      <div class="s-h grid"><h2>일하는 방식</h2><p></p></div>
       <div class="grid">
-        <div class="body">
-          <div class="essay">
-            <p>오래 써도 질리지 않는 도구를 좋아합니다. 설명서 없이 손에 붙고, 쓰다 보면 도구라는 걸 잊게 되는 것. 디터 람스의 「덜, 그러나 더 낫게」는 무언가를 만들 때 가장 먼저 꺼내 보는 기준입니다.</p>
-            <p>요즘은 AI가 일하는 방식을 어떻게 바꾸는지를 오래 들여다봅니다. 새 기능을 하나 더 얹기보다, 원래 하던 일 — 문서를 열고, 고치고, 보내는 일 — 사이에 조용히 들어가는 쪽이 더 오래 간다고 생각합니다. INDIFF는 그 생각을 직접 확인해 보려고 만들고 있습니다.</p>
-            <p>그리고 여전히 커머스와 데이터를 좋아합니다. 처음 일을 배운 곳이고, 숫자가 거짓말을 잘 하지 않는 곳이라서.</p>
-          </div>
-        </div>
+        <ul class="how col">
+          <li><h3>개발자와 같은 말로 이야기합니다</h3><p>그루폰코리아와 프라브코리아에서는 셀링툴 API 연동을 맡았습니다. 그 자리에서 코드를 직접 쓰지는 않았습니다. 그래도 무엇이 쉽고 무엇이 어려운지 알고 있으면 회의가 짧아집니다. 프라브에서는 그 덕에 API를 새로 만들지 않고 이미 있던 API만으로 상품 등록과 주문 수집을 셀링툴에 이었습니다.</p></li>
+          <li><h3>AI는 GPT-3 때부터 써 왔습니다</h3><p>그때는 지금처럼 잘 되지 않았습니다. 엉뚱한 대답도 자주 했고요. 그래도 매일 붙잡고 있다 보니 어디까지 맡겨도 되는지 감이 생겼고, Cursor, Lovable, Replit 같은 도구를 하나씩 만져 보며 Arkain의 방향을 다듬어 왔습니다. 프롬프트는 지금도 기획서의 한 장이라고 생각하고 씁니다.</p></li>
+          <li><h3>없던 것을 만드는 일을 자주 맡았습니다</h3><p>온라인사업부가 없던 회사에 사업부를 만들었고, 커머스 플랫폼을 맨땅에서 열었습니다. 해외 채널도 직접 찾아 나섰습니다. Arkain도 빈 문서 한 장에서 시작했습니다. 운이 좋았던 건지 나빴던 건지는 잘 모르겠습니다. 다만 그 덕분에 아무것도 없는 상태가 예전만큼 무섭지는 않습니다.</p></li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <section class="s" id="figures">
-    <div class="wrap">
-      <div class="s-h grid"><h2>수치</h2><p>기획 · 개발 · 사업을 나누지 않고 한 일.</p></div>
-      <div class="figs">
-        <div><b>300,000</b><span>하루에 수집한 상품 수<br>가격비교 검색엔진</span></div>
-        <div><b>10+</b><span>운영한 중국 플랫폼<br>K-뷰티 진출</span></div>
-        <div><b>4</b><span>시장<br>한국 · 중국 · 베트남 · 일본</span></div>
-        <div><b>4</b><span>0에서 만든 사업<br>사업부 · 커머스 · 플랫폼 · IDE</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="s" id="work">
-    <div class="wrap">
-      <div class="s-h grid"><h2>작업</h2><p>직접 만든 것과 직접 운영한 것.</p></div>
-      <ol class="work">
-        <li class="grid">
-          <p class="meta"><b>비투링크</b>2014 – 2019</p>
-          <h3>가격비교 검색엔진<small>타오바오 · 티몰 · JD · 아마존 · 라자다</small></h3>
-          <p class="d">해외 쇼핑몰을 통합 크롤링해 실시간 가격을 비교. 2년 치 트렌드 데이터를 Onsight BI로 정제.<span class="v">일 300,000 상품</span></p>
-        </li>
-        <li class="grid">
-          <p class="meta"><b>비투링크 · 피엘</b>2014 – 2022</p>
-          <h3>K-뷰티 크로스보더<small>skin1004 · Carryophy</small></h3>
-          <p class="d">JD · VIP · RED · 위챗 등 중국 플랫폼 입점과 운영, 역직구몰 xinglala.com. 이후 베트남 수출을 온 · 오프라인 전 채널에서 총괄.<span class="v">중국 플랫폼 10+ · <span class="todo">매출 · 성장</span></span></p>
-        </li>
-        <li class="grid">
-          <p class="meta"><b>피엘인터내셔널</b>2020 – 2022</p>
-          <h3>쿠팡 자동화<small>Node.js · AWS · MongoDB</small></h3>
-          <p class="d">데이터 수집, 트래픽 관리, 키워드 순위 추적, 마케팅 데이터 시각화. 운영하면서 직접 개발.</p>
-        </li>
-        <li class="grid">
-          <p class="meta"><b>비투링크</b>2014 – 2019</p>
-          <h3>UMMA<small>뷰티 B2B · 통합 운영</small></h3>
-          <p class="d">B2B 거래 플랫폼 프로토타입과 API 서버 개발. WMS · OMS · SCM 설계로 주문 · 재고 · 정산 · 배송 연결.<span class="v"><a href="https://umma.io">umma.io</a></span></p>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <section class="s" id="range">
-    <div class="wrap">
-      <div class="s-h grid"><h2>기획 · 개발 · 사업</h2><p>회사별로 맡은 영역.</p></div>
-      <div class="grid">
-        <div class="range-wrap">
-          <table class="range">
-            <thead><tr><th>시작</th><th>회사</th><th class="m">기획</th><th class="m">개발</th><th class="m">사업</th></tr></thead>
-            <tbody>
-              <tr><td class="y">2022</td><td>(주)구름</td><td class="m"><i class="dot"></i></td><td class="m"><i class="dot"></i></td><td class="m"><i class="dot"></i></td></tr>
-              <tr><td class="y">2020</td><td>피엘인터내셔널</td><td class="m"><i class="dot"></i></td><td class="m"><i class="dot"></i></td><td class="m"><i class="dot"></i></td></tr>
-              <tr><td class="y">2014</td><td>비투링크</td><td class="m"><i class="dot"></i></td><td class="m"><i class="dot"></i></td><td class="m"><i class="dot"></i></td></tr>
-              <tr><td class="y">2012</td><td>프라브코리아</td><td class="m"><i class="dot"></i></td><td class="m"><i class="dot part"></i></td><td class="m"><i class="dot"></i></td></tr>
-              <tr><td class="y">2011</td><td>그루폰코리아</td><td class="m"><i class="dot"></i></td><td class="m"><i class="dot part"></i></td><td class="m"><i class="dot"></i></td></tr>
-              <tr><td class="y">2010</td><td>티에프티나인</td><td class="m"><i class="dot"></i></td><td class="m"></td><td class="m"><i class="dot"></i></td></tr>
-              <tr><td class="y">2006</td><td>제너럴아이디어바이범석</td><td class="m"><i class="dot"></i></td><td class="m"></td><td class="m"><i class="dot"></i></td></tr>
-              <tr><td class="y">2005</td><td>성신유통</td><td class="m"><i class="dot"></i></td><td class="m"></td><td class="m"><i class="dot"></i></td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="range-note">○ API 연동 PM</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="s" id="career">
+  <section class="career-s" id="career">
     <div class="wrap">
       <div class="s-h grid"><h2>경력</h2><p>최근 순.</p></div>
-      <ol class="career">
-        <li class="grid"><span class="when">2022.07 – 현재</span><span class="co">(주)구름</span><span class="d">Arkain 기획 · 런칭. 구름IDE 제품 총괄. 카카오 그룹 협력 PM(LMS/IDE, D2Hub · Kargo · DKOS). LG전자 · 일본 사이버대학 B2B. AI 디지털교과서. 디지털새싹 수주.</span></li>
-        <li class="grid"><span class="when">2020.04 – 2022.05</span><span class="co">피엘인터내셔널</span><span class="d">Carryophy 베트남 수출 총괄. 자사몰 · 스마트스토어 · 쿠팡 통합 운영. 자동화 · 시각화 개발.</span></li>
-        <li class="grid"><span class="when">2014.08 – 2019.12</span><span class="co">비투링크</span><span class="d">skin1004 중국 진출. 가격비교 검색엔진. UMMA. WMS · OMS · SCM 설계.</span></li>
-        <li class="grid"><span class="when">2012.08 – 2014.03</span><span class="co">프라브코리아</span><span class="d">pravs.co.kr 기획 · 런칭. 셀링툴 API 연동 PM. 티몬 백화점관 오픈.</span></li>
-        <li class="grid"><span class="when">2011.11 – 2012.08</span><span class="co">그루폰코리아</span><span class="d">내부 커머스 플랫폼 기획. 셀링툴 API 개발 PM. CRM 메일링.</span></li>
-        <li class="grid"><span class="when">2010.10 – 2011.05</span><span class="co">티에프티나인</span><span class="d">멀티채널 운영. SNS · PPL 마케팅.</span></li>
-        <li class="grid"><span class="when">2006.05 – 2009.03</span><span class="co">제너럴아이디어바이범석</span><span class="d">온라인사업부 신설 · 운영.</span></li>
-        <li class="grid"><span class="when">2005.02 – 2006.02</span><span class="co">성신유통</span><span class="d">패션 전문몰 상품 기획.</span></li>
-      </ol>
-    </div>
-  </section>
 
-  <section class="s" id="how">
-    <div class="wrap">
-      <div class="s-h grid"><h2>방식</h2><p>일하는 순서.</p></div>
-      <div class="grid">
-        <ol class="how">
-          <li><h3>뜯어본다</h3><p>경쟁 제품의 구조와 사용 흐름부터.</p></li>
-          <li><h3>직접 만든다</h3><p>확인할 수 있을 만큼 작게, 먼저.</p></li>
-          <li><h3>시스템으로 바꾼다</h3><p>반복되는 운영은 도구로.</p></li>
-        </ol>
+      <div class="job grid">
+        <p class="when">2022 – 현재</p>
+        <div class="main">
+          <h3>(주)구름<small>Product Owner · AI 개발 도구 · 에듀테크</small></h3>
+          <ul>
+            <li><b>사내 AI 게이트웨이 TokenHub · TokenHub Agents</b> — 팀마다 따로 쓰던 AI 연동을 하나의 관문으로 통합하고, 장시간 AI 작업 실행 플랫폼까지 구축</li>
+            <li><b>바이브코딩 IDE Arkain</b> 기획부터 런칭까지 주도 — 자연어로 앱을 만드는 에이전트, AI 채팅, 코드 완성을 갖춘 클라우드 IDE</li>
+            <li><b>구름IDE 제품 총괄</b> — 로드맵 관리, 스프린트 운영, 신규 기능 기획, B2B · B2C 고객 분석</li>
+            <li><b>카카오 그룹 다부문 협력 PM</b> — LMS · IDE 개발, 클라우드 자원 연동(D2Hub · Kargo · DKOS), 엔터프라이즈 IDE 구축</li>
+            <li><b>B2B 파트너십</b> — LG전자(LGswedu), 일본 사이버대학 등 국내외 고객 운영</li>
+            <li><b>교육 · 공공 확장</b> — AI 디지털교과서 참여, 정부사업 디지털새싹 수주</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="job grid">
+        <p class="when">2020 – 2022</p>
+        <div class="main">
+          <h3>피엘인터내셔널<small>글로벌 사업 총괄 · K-뷰티</small></h3>
+          <ul>
+            <li>K-뷰티 브랜드 Carryophy의 <b>베트남 수출 사업을 온 · 오프라인 전 채널에서 총괄</b></li>
+            <li>자사몰 · 네이버 스마트스토어 · 쿠팡 통합 운영으로 판매 채널 다각화</li>
+            <li><b>쿠팡 운영 자동화 시스템 직접 개발</b> — 데이터 수집, 트래픽 관리, 키워드 순위 추적(Node.js · AWS · MongoDB)</li>
+            <li>마케팅 데이터 시각화 · 리포팅 체계 구축</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="job grid">
+        <p class="when">2014 – 2019</p>
+        <div class="main">
+          <h3>비투링크 B2LINK<small>글로벌 이커머스 · 데이터 플랫폼</small></h3>
+          <ul>
+            <li>K-뷰티 브랜드 skin1004의 <b>중국 진출 실행</b> — JD · VIP · RED · 위챗(웨이상) · 쥬메이 · 모구지에 등 10개 이상 플랫폼 입점 · 운영</li>
+            <li>위챗 기반 대리상 지원 플랫폼과 역직구몰(xinglala.com) 기획 · 운영</li>
+            <li><b>실시간 가격비교 검색엔진 개발</b> — 타오바오 · 티몰 · JD · 아마존 · 라자다 · 야후쇼핑재팬 통합, 하루 30만 건 수집</li>
+            <li><b>빅데이터 분석 시스템 구축</b> — 타오바오에서 모은 상품 데이터로 시장 · 트렌드 분석, 2년 치 데이터를 BI 서비스(Onsight BI)로 정리</li>
+            <li><b>SCM 기획 · 운영</b> — 국내 뷰티 브랜드를 골라 여러 나라에 안정적으로 공급하기 위한 B2C · B2B 통합 운영(WMS · OMS · SCM), 주문 · 재고 · 정산 · 배송을 하나로 연결</li>
+            <li>B2B 거래 플랫폼 <b>UMMA(umma.io)</b> 프로토타입 · API 서버 개발</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="job grid">
+        <p class="when">2012 – 2014</p>
+        <div class="main">
+          <h3>프라브코리아<small>커머스 플랫폼 기획</small></h3>
+          <ul>
+            <li>커머스 플랫폼 pravs.co.kr <b>기획 · 런칭 총괄</b>, 프론트엔드 · 백오피스 설계, 2차 리뉴얼 주도</li>
+            <li>셀링툴 · 제휴몰 API 연동 PM — 기존 셀링툴 API로 상품 업데이트 · 주문 수집 체계 구축</li>
+            <li>위탁 매입 상품 재고 연동 시스템 개발 관리</li>
+            <li>티몬 백화점관 오픈 총괄, CJ 스타일오샵 등 위탁 채널 운영, OK캐쉬백 등 제휴 연동</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="job grid">
+        <p class="when">2005 – 2012</p>
+        <div class="main">
+          <h3>초기 경력<small>커머스 기획 · 운영</small></h3>
+          <ul>
+            <li><b>그루폰코리아</b> — 내부 커머스 플랫폼 프론트엔드 · 백오피스 기획, 셀링툴 API 개발 PM, 대규모 회원 CRM 운영</li>
+            <li><b>제너럴아이디어바이범석</b> — 온라인사업부 신설: 조직 구성, 채용, 운영 프로세스 설계, 브랜드 공식몰 런칭</li>
+            <li><b>티에프티나인 · 성신유통</b> — 지마켓 · 옥션 · 11번가 · 위즈위드 등 주요 오픈마켓 동시 운영, 상품 기획, SNS · PPL 마케팅</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
+  <section>
+    <div class="wrap">
+      <div class="s-h grid"><h2>관심</h2><p>좋아하는 것.</p></div>
+      <div class="grid">
+        <div class="col essay">
+          <p>오래 써도 질리지 않는 도구를 좋아합니다. 처음 손에 쥐었을 때는 별것 아닌 것 같은데, 몇 년이 지나도 자꾸 손이 가는 것. 디터 람스의 「덜, 그러나 더 낫게」를 읽었을 때, 아마 이런 걸 두고 한 이야기겠구나 하고 생각했습니다.</p>
+          <p>요즘은 AI가 사람이 일하는 방식을 어떻게 바꿀지에 관심이 많습니다. 개인적으로는 화려한 새 기능보다 원래 하던 일에 슬쩍 끼어드는 쪽이 오래 남을 거라고 봅니다. 문서를 열고, 고치고, 보내는, 그런 평범한 일들 사이 말입니다. 물론 틀릴 수도 있습니다. 그래서 INDIFF를 직접 만들어 보고 있습니다.</p>
+          <p>커머스와 데이터에는 여전히 마음이 갑니다. 커머스는 처음 일을 배운 곳이고, 데이터는 대체로 거짓말을 하지 않으니까요.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="s-h grid"><h2>그 밖에</h2><p></p></div>
+      <div class="side grid"><h3>역할</h3><div>제품 기획(PO) · 프로젝트 관리(PM) · 사업 운영 · 시스템 개발</div></div>
+      <div class="side grid"><h3>AI</h3><div>LLM 활용(GPT · Claude) · Claude Code · 프롬프트 설계 · AI 에이전트 제품 기획</div></div>
+      <div class="side grid"><h3>기술</h3><div>Node.js · Python · JavaScript · Express · MongoDB · MySQL · AWS</div></div>
+      <div class="side grid"><h3>영역</h3><div>AI 개발 도구 · SaaS · 에듀테크 · 이커머스 · 크로스보더</div></div>
+      <div class="side grid"><h3>학력</h3><div>인덕대학교 실내건축디자인과 졸업</div></div>
+    </div>
+  </section>
 </main>
 
-<footer id="contact">
+<footer>
   <div class="wrap"><div class="line"></div></div>
   <div class="wrap grid">
     <span class="k">연락</span>
     <span class="v"><a href="mailto:12k4@naver.com">12k4@naver.com</a><a href="https://github.com/choisukjune">github.com/choisukjune</a></span>
-    <span class="k">최석준</span>
-    <span class="v" style="color:var(--ink-3)">Product Owner</span>
   </div>
 </footer>
 

@@ -1,3 +1,5 @@
 v*.html
 content.md
 .DS_Store
+resume-web.md
+*.pdf
