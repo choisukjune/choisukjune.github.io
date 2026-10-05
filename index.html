@@ -90,6 +90,21 @@
   .credit { grid-column: 2 / span 6; margin-top: 96px; font-size: 12px; font-weight: 600; line-height: 1.7; }
   .credit a { text-decoration: none; }
 
+  /* ── 01 누구인가 ────────────────────────────── */
+  .who { grid-column: 2 / span 6; }
+  .who h2 { font-size: clamp(44px, 6.4vw, 88px); font-weight: 750; line-height: 1.1; letter-spacing: -.05em; }
+  .who .role { margin-top: 10px; font-size: 15px; font-weight: 600; color: var(--ink-2); }
+  .who .prose { margin-top: 40px; }
+  .who .prose p { color: var(--ink-2); line-height: 1.9; font-size: 16px; }
+  .who .prose p + p { margin-top: 16px; }
+  .who .credit { margin-top: 32px; }
+  .figrow { grid-column: 2 / span 11; margin-top: 56px; padding-top: 28px; }
+  .figrow h3 { font-size: 19px; font-weight: 700; letter-spacing: -.03em; margin-bottom: 18px; }
+  .figrow .figs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: 24px; }
+  .figrow .figs li { display: block; padding: 0 0 12px; }
+  .figrow .figs b { display: block; font-size: clamp(32px, 3.4vw, 44px); }
+  .figrow .figs span { display: block; margin-top: 8px; }
+
   /* ── 02 소개: 큰 인용 ───────────────────────── */
   section.s { padding: 96px 0 0; }
   .quote { grid-column: 2 / span 7; position: relative; margin-top: 48px; padding-left: .2em; }
@@ -178,11 +193,12 @@
     .hello h1 { margin-left: 0; }
     .hello .cite { margin-left: 0; }
     .ticks { display: none; }
-    .top .name, .top .act, .toc, .toc-note, .cover .lined, .credit, .quote, .two, .s-h, .body, .job .when, .job .main, .side h3, .side div, .contact h2, .contact .msg, .contact .links, .stamp { grid-column: 1; }
+    .who, .figrow, .top .name, .top .act, .toc, .toc-note, .cover .lined, .credit, .quote, .two, .s-h, .body, .job .when, .job .main, .side h3, .side div, .contact h2, .contact .msg, .contact .links, .stamp { grid-column: 1; }
     .top .grid { grid-template-columns: auto 1fr; }
     .top .act { grid-column: 2; }
     .cover .lined { margin-top: 40px; }
     .credit { margin-top: 48px; }
+    .figrow .figs { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 20px; }
     .quote { padding-left: 0; margin-top: 40px; }
     .quote .open { position: static; display: block; height: .45em; }
     .two, .recent, .recent .lead { grid-template-columns: minmax(0, 1fr); }
@@ -204,7 +220,13 @@
     .wrap { max-width: none; padding: 0; }
     .cover { padding: 0; }
     .cover .grid { margin-top: 0; }
-    .cover .lined { grid-column: 1 / -1; }
+    .cover .lined, .who, .figrow { grid-column: 1 / -1; }
+    .who h2 { font-size: 22pt; }
+    .who .prose { margin-top: 8px; }
+    .who .prose p { font-size: 9.5pt; line-height: 1.6; }
+    .who .credit { margin-top: 6px; }
+    .figrow { margin-top: 10px; padding-top: 8px; }
+    .figrow .figs b { font-size: 16pt; }
     .cover .lined li { font-size: 9.5pt; padding: 3px 0; }
     .credit { grid-column: 1 / -1; margin-top: 8px; order: -1; font-size: 9pt; }
     section.s { padding-top: 14px; }
@@ -247,7 +269,7 @@
 <header class="top">
   <div class="wrap grid">
     <a class="name" href="#top">최석준</a>
-    <div class="act"><a href="#contact">연락</a><button type="button" onclick="window.print()">PDF로 저장</button></div>
+    <div class="act"><a href="#work">작업</a><a href="#career">경력</a><a href="#contact">연락</a><button type="button" onclick="window.print()">PDF로 저장</button></div>
   </div>
 </header>
 
@@ -259,58 +281,51 @@
     <div class="wrap"><h1>더 적게,<br>그러나 더 좋게.</h1><p class="cite">“Weniger, aber besser.” — 디터 람스</p></div>
   </section>
 
-  <!-- 01 표지 -->
-  <section class="cover">
+  <!-- 01 누구인가 -->
+  <section class="cover" id="about">
     <div class="wrap">
       <div class="bar"></div>
       <div class="grid">
         <div class="margin-dots" aria-hidden="true"></div>
-        <ol class="toc" aria-label="차례">
-          <li><a href="#about">소개<span class="no">01</span></a></li>
-          <li><a href="#work">최근 작업<span class="no">02</span></a></li>
-          <li><a href="#how">일하는 방식<span class="no">03</span></a></li>
-          <li><a href="#career">경력<span class="no">04</span></a></li>
-          <li><a href="#contact">연락<span class="no">05</span></a></li>
-        </ol>
+        <div class="who">
+          <h2>최석준.</h2>
+          <p class="role">Product Owner · (주)구름</p>
+          <div class="prose">
+            <p>처음 맡은 일은 쇼핑몰에 상품을 올리는 것이었습니다. 별로 대단할 것 없는 일이었습니다. 사진을 고르고, 설명을 쓰고, 가격을 매겼습니다. 그런데 같은 물건이 다른 곳에서는 얼마에 팔리는지가 이상하게 신경 쓰였습니다. 그게 궁금해서 프로그램을 짰고, 한참 뒤에는 타오바오와 아마존을 실시간으로 뒤지는 검색엔진을 만들고 있었습니다. 그렇게 모인 데이터가 2년 치쯤 쌓이자 이번에는 그걸 읽어 낼 분석 시스템이 필요해졌고, 그 일도 제가 맡게 되었습니다.</p>
+            <p>그 뒤로도 대체로 비슷했습니다. 비투링크에서는 국내 뷰티 브랜드 가운데 될 만한 것을 골라 여러 나라에 자리 잡게 하는 일을 했습니다. 한 번 보내는 것과 끊기지 않고 계속 보내는 것은 꽤 다른 일이어서, 그 사이를 잇는 SCM을 기획하고 운영하는 일을 맡았습니다. 베트남 수출을 맡던 무렵에는 국내 쿠팡 운영에 드는 손을 덜어 보려고 자동화 도구를 만들었습니다. 일이 막히면 프로그램을 짰고, 그 프로그램은 또 다른 일로 이어졌습니다. 지금은 (주)구름에서 AI 개발 도구와 에듀테크 제품을 만들고 있습니다. 하는 일의 모양은 그때와 크게 다르지 않습니다. 다루는 문제가 조금 커졌을 뿐입니다.</p>
+          </div>
+          <p class="credit"><a href="mailto:12k4@naver.com">12k4@naver.com</a><br><a href="https://github.com/choisukjune">github.com/choisukjune</a></p>
+        </div>
         <ul class="lined" aria-label="요약">
             <li><b>AI 제품</b> 바이브코딩 IDE Arkain 기획부터 런칭까지 주도.</li>
             <li><b>직접 만든 것</b> 하루 30만 건 크롤링과 빅데이터 분석 시스템, 쿠팡 운영 자동화, B2B 플랫폼 API 서버.</li>
             <li><b>해외 사업</b> 국내 뷰티 브랜드의 해외 랜딩과 SCM 기획 · 운영, 중국(10개 이상 플랫폼) · 베트남 진출 실행과 총괄.</li>
             <li><b>함께 일한 곳</b> 카카오 그룹 다부문 협력 PM, LG전자 · 일본 사이버대학 B2B, 정부사업 디지털새싹 수주.</li>
         </ul>
-        <p class="toc-note">천천히 둘러보세요.</p>
-        <p class="credit">최석준.<br>Product Owner, (주)구름<br><a href="mailto:12k4@naver.com">12k4@naver.com</a><br><a href="https://github.com/choisukjune">github.com/choisukjune</a></p>
       </div>
     </div>
   </section>
 
-  <!-- 02 소개 -->
-  <section class="s" id="about">
+  <!-- 02 인용 · 수치 -->
+  <section class="s" id="figures">
     <div class="wrap">
       <div class="bar"></div>
       <div class="grid">
         <div class="margin-dots" aria-hidden="true"></div>
         <blockquote class="quote">
           <span class="mk open" aria-hidden="true">“</span>
-          <q>일이 막히면 프로그램을 짰고, 그 프로그램은 또 다른 일로 이어졌습니다.<span class="mk close" aria-hidden="true">”</span></q>
+          <q>아무것도 없는 상태가 예전만큼 무섭지는 않습니다.<span class="mk close" aria-hidden="true">”</span></q>
         </blockquote>
         <div class="lined-empty" aria-hidden="true"></div>
-        <div class="two dash">
-          <div class="prose">
-            <h3>소개</h3>
-          <p>처음 맡은 일은 쇼핑몰에 상품을 올리는 것이었습니다. 별로 대단할 것 없는 일이었습니다. 사진을 고르고, 설명을 쓰고, 가격을 매겼습니다. 그런데 같은 물건이 다른 곳에서는 얼마에 팔리는지가 이상하게 신경 쓰였습니다. 그게 궁금해서 프로그램을 짰고, 한참 뒤에는 타오바오와 아마존을 실시간으로 뒤지는 검색엔진을 만들고 있었습니다. 그렇게 모인 데이터가 2년 치쯤 쌓이자 이번에는 그걸 읽어 낼 분석 시스템이 필요해졌고, 그 일도 제가 맡게 되었습니다.</p>
-          <p>그 뒤로도 대체로 비슷했습니다. 비투링크에서는 국내 뷰티 브랜드 가운데 될 만한 것을 골라 여러 나라에 자리 잡게 하는 일을 했습니다. 한 번 보내는 것과 끊기지 않고 계속 보내는 것은 꽤 다른 일이어서, 그 사이를 잇는 SCM을 기획하고 운영하는 일을 맡았습니다. 베트남 수출을 맡던 무렵에는 국내 쿠팡 운영에 드는 손을 덜어 보려고 자동화 도구를 만들었습니다. 일이 막히면 프로그램을 짰고, 그 프로그램은 또 다른 일로 이어졌습니다. 지금은 (주)구름에서 AI 개발 도구와 에듀테크 제품을 만들고 있습니다. 하는 일의 모양은 그때와 크게 다르지 않습니다. 다루는 문제가 조금 커졌을 뿐입니다.</p>
-          </div>
-          <div>
-            <h3>수치</h3>
-            <ul class="figs">
-              <li><b>192만</b><span>Arkain 사용자 · 157개국</span></li>
-              <li><b>69%</b><span>Arkain 해외 사용자 비중</span></li>
-              <li><b>30만</b><span>하루 상품 수집 · 가격비교 검색엔진</span></li>
-              <li><b>10+</b><span>운영한 중국 플랫폼 · skin1004</span></li>
-            </ul>
-            <p class="note">Arkain 수치는 Arkain 서비스 소개서 기준.</p>
-          </div>
+        <div class="figrow dash">
+          <h3>수치</h3>
+          <ul class="figs">
+            <li><b>192만</b><span>Arkain 사용자 · 157개국</span></li>
+            <li><b>69%</b><span>Arkain 해외 사용자 비중</span></li>
+            <li><b>30만</b><span>하루 상품 수집 · 가격비교 검색엔진</span></li>
+            <li><b>10+</b><span>운영한 중국 플랫폼 · skin1004</span></li>
+          </ul>
+          <p class="note">Arkain 수치는 Arkain 서비스 소개서 기준.</p>
         </div>
       </div>
     </div>
@@ -321,7 +336,7 @@
     <div class="wrap">
       <div class="bar"></div>
       <div class="grid">
-        <div class="s-h"><h2>최근 작업<span class="no">02</span></h2><p>요즘 하고 있는 일.</p></div>
+        <div class="s-h"><h2>최근 작업</h2><p>요즘 하고 있는 일.</p></div>
         <div class="body recent">
           <article class="lead">
             <p class="k">사내 AI 플랫폼 · (주)구름</p>
@@ -385,7 +400,7 @@
     <div class="wrap">
       <div class="bar"></div>
       <div class="grid">
-        <div class="s-h"><h2>경력<span class="no">04</span></h2><p>최근 순.</p></div>
+        <div class="s-h"><h2>경력</h2><p>최근 순.</p></div>
       </div>
       <div class="job grid">
         <p class="when">2022 – 현재</p>
