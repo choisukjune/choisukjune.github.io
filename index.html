@@ -67,7 +67,8 @@
   .hello { position: relative; min-height: min(86svh, 820px); overflow: hidden; display: flex; align-items: center; }
   .hello .wrap { width: 100%; }
   .hello .bar { position: absolute; top: 40px; left: 50%; transform: translateX(-50%); }
-  .hello h1 { position: relative; z-index: 1; margin-left: 36%; font-size: clamp(56px, 8.6vw, 124px); font-weight: 750; line-height: 1.08; letter-spacing: -.05em; }
+  .hello h1 { position: relative; z-index: 1; margin-left: 34%; font-size: clamp(52px, 7.4vw, 112px); font-weight: 750; line-height: 1.08; letter-spacing: -.05em; }
+  .hello .cite { position: relative; z-index: 1; margin: 28px 0 0 34%; font-size: 15px; font-weight: 600; color: var(--ink-2); letter-spacing: -.01em; }
   .ticks { position: absolute; left: var(--gut); top: 0; bottom: 0; width: 64px; pointer-events: none; }
   .ticks i { position: absolute; left: 0; width: 64px; height: 1.5px; background: var(--ink); }
   .ticks i:nth-child(1) { top: 18%; }
@@ -175,6 +176,7 @@
     .margin-dots, .lined-empty, .vert { display: none; }
     .hello { min-height: 72svh; }
     .hello h1 { margin-left: 0; }
+    .hello .cite { margin-left: 0; }
     .ticks { display: none; }
     .top .name, .top .act, .toc, .toc-note, .cover .lined, .credit, .quote, .two, .s-h, .body, .job .when, .job .main, .side h3, .side div, .contact h2, .contact .msg, .contact .links, .stamp { grid-column: 1; }
     .top .grid { grid-template-columns: auto 1fr; }
@@ -254,7 +256,7 @@
   <section class="hello" aria-label="인사">
     <div class="bar"></div>
     <div class="ticks" aria-hidden="true"><i></i><i></i><span>기획 / 개발 / 사업</span></div>
-    <div class="wrap"><h1>아,<br>오셨군요.</h1></div>
+    <div class="wrap"><h1>더 적게,<br>그러나 더 좋게.</h1><p class="cite">“Weniger, aber besser.” — 디터 람스</p></div>
   </section>
 
   <!-- 01 표지 -->
@@ -369,7 +371,7 @@
           </div>
           <div class="prose">
             <h3>관심</h3>
-          <p>오래 써도 질리지 않는 도구를 좋아합니다. 처음 손에 쥐었을 때는 별것 아닌 것 같은데, 몇 년이 지나도 자꾸 손이 가는 것. 디터 람스의 「덜, 그러나 더 낫게」를 읽었을 때, 아마 이런 걸 두고 한 이야기겠구나 하고 생각했습니다.</p>
+          <p>오래 써도 질리지 않는 도구를 좋아합니다. 처음 손에 쥐었을 때는 별것 아닌 것 같은데, 몇 년이 지나도 자꾸 손이 가는 것. 디터 람스의 「더 적게, 그러나 더 좋게」를 읽었을 때, 아마 이런 걸 두고 한 이야기겠구나 하고 생각했습니다.</p>
           <p>요즘은 AI가 사람이 일하는 방식을 어떻게 바꿀지에 관심이 많습니다. 개인적으로는 화려한 새 기능보다 원래 하던 일에 슬쩍 끼어드는 쪽이 오래 남을 거라고 봅니다. 문서를 열고, 고치고, 보내는, 그런 평범한 일들 사이 말입니다. 물론 틀릴 수도 있습니다. 그래서 INDIFF를 직접 만들어 보고 있습니다.</p>
           <p>커머스와 데이터에는 여전히 마음이 갑니다. 커머스는 처음 일을 배운 곳이고, 데이터는 대체로 거짓말을 하지 않으니까요.</p>
           </div>
