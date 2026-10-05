@@ -45,7 +45,9 @@
 
   /* ── 장치들 ───────────────────────────────── */
   /* 구획 위 가운데의 짧고 굵은 막대 */
-  .bar { width: 28%; max-width: 320px; height: 4px; background: var(--ink); margin: 0 auto; }
+  /* 구획을 여는 줄 — 둘째 단부터 오른쪽 끝까지 길게 */
+  /* 가로줄 대신 여백으로 구획을 나눈다 */
+  .bar { display: none; }
   /* 왼쪽 여백의 점선 줄 */
   .margin-dots { grid-column: 1; align-self: stretch; min-height: 100%;
     background-image: radial-gradient(circle, var(--dot) .7px, transparent 1px);
@@ -53,7 +55,7 @@
   /* 글을 얹는 점선 공책 줄 */
   .lined li, .lined p { border-bottom: 1px dotted var(--dot); }
   .lined-empty { background-image: radial-gradient(circle, var(--dot) .7px, transparent 1px); background-size: 4px 22px; background-position: 0 21px; min-height: 260px; }
-  .dash { border-top: 1px dashed var(--ink-3); }
+  .dash { border-top: 0; }
   .no { font-size: 11px; font-weight: 600; color: var(--ink-3); margin-left: 4px; letter-spacing: 0; vertical-align: -.1em; }
 
   /* ── 머리 띠 ──────────────────────────────── */
@@ -66,7 +68,7 @@
   /* ── 00 인사 ──────────────────────────────── */
   .hello { position: relative; min-height: min(86svh, 820px); overflow: hidden; display: flex; align-items: center; }
   .hello .wrap { width: 100%; }
-  .hello .bar { position: absolute; top: 40px; left: 50%; transform: translateX(-50%); }
+  .hello .bar { display: none; }
   .hello h1 { position: relative; z-index: 1; margin-left: 34%; font-size: clamp(52px, 7.4vw, 112px); font-weight: 750; line-height: 1.08; letter-spacing: -.05em; }
   .hello .cite { position: relative; z-index: 1; margin: 28px 0 0 34%; font-size: 15px; font-weight: 600; color: var(--ink-2); letter-spacing: -.01em; }
   .ticks { position: absolute; left: var(--gut); top: 0; bottom: 0; width: 64px; pointer-events: none; }
@@ -76,7 +78,7 @@
   .ticks span { position: absolute; left: 18px; bottom: 32px; white-space: nowrap; transform: rotate(-90deg); transform-origin: left bottom; font-size: 15px; font-weight: 600; letter-spacing: .02em; }
 
   /* ── 01 표지: 차례 + 줄 공책 ─────────────────── */
-  .cover { padding: 40px 0 72px; }
+  .cover { padding: clamp(88px, 10vw, 144px) 0 0; }
   .cover .grid { margin-top: 56px; }
   .toc { grid-column: 2 / span 6; }
   .toc li { font-size: clamp(30px, 4.4vw, 54px); font-weight: 700; line-height: 1.22; letter-spacing: -.04em; }
@@ -90,7 +92,39 @@
   .credit { grid-column: 2 / span 6; margin-top: 96px; font-size: 12px; font-weight: 600; line-height: 1.7; }
   .credit a { text-decoration: none; }
 
-  /* ── 01 누구인가 ────────────────────────────── */
+  /* ── 01 소개 — 신문 지면처럼: 이름 · 머리글 · 두 단 본문 · 곁단 ── */
+  .who-grid { row-gap: 0; }
+  .who-head { grid-column: 2 / span 11; padding-bottom: 0; display: grid; grid-template-columns: 1fr auto; align-items: end; column-gap: 24px; }
+  .who-head .kicker { grid-column: 1 / -1; font-size: 12px; font-weight: 700; letter-spacing: .02em; margin-bottom: 14px; }
+  .who-head h2 { font-size: clamp(48px, 6.8vw, 96px); font-weight: 750; line-height: 1; letter-spacing: -.05em; }
+  .who-head .role { font-size: 14px; font-weight: 600; color: var(--ink-2); padding-bottom: 8px; }
+  .who-head .role { text-align: right; line-height: 1.7; }
+  .who-head .hc { font-weight: 500; color: var(--ink-3); }
+  .who-head .hc a { text-decoration: none; }
+  .who-head .hc a:hover { color: var(--ink); }
+  .sumrow { grid-column: 2 / span 11; margin: 96px 0 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: 32px; }
+  .sumrow dt { font-size: 13px; font-weight: 700; margin-bottom: 8px; }
+  .sumrow dd { margin: 0; font-size: 14px; line-height: 1.7; color: var(--ink-2); }
+  .standfirst { grid-column: 2 / span 8; text-wrap: balance; margin-top: 28px; font-size: clamp(20px, 2vw, 26px); font-weight: 600; line-height: 1.5; letter-spacing: -.035em; max-width: 26em; }
+  .columns { grid-column: 2 / span 9; margin-top: 48px; padding-top: 0; columns: 2; column-gap: 40px; column-rule: 1px dotted var(--dot); }
+  .columns p { color: var(--ink-2); font-size: 15px; line-height: 1.9; letter-spacing: -.015em; }
+  .columns p + p { margin-top: 14px; }
+  .sidebar { grid-column: 10 / span 3; grid-row: 1 / span 3; align-self: start; border-top: 4px solid var(--ink); padding-top: 14px; }
+  .sidebar h3 { font-size: 12px; font-weight: 700; letter-spacing: .02em; margin-bottom: 6px; }
+  .sidebar li { padding: 12px 0 13px; border-bottom: 1px dotted var(--dot); }
+  .sidebar li b { display: block; font-size: 13px; font-weight: 700; }
+  .sidebar li span { display: block; margin-top: 3px; font-size: 13px; line-height: 1.6; color: var(--ink-2); }
+  .sb-contact { margin-top: 18px; font-size: 12px; font-weight: 600; line-height: 1.8; }
+  .sb-contact a { text-decoration: none; }
+
+  /* ── 02 인용 — 굵은 선 두 줄 사이, 여는 따옴표는 여백에 매단다 ── */
+  .pull { grid-column: 2 / span 11; margin: 0; padding: 0; }
+  .pull blockquote { margin: 0; }
+  .pull blockquote p { font-size: clamp(30px, 4vw, 54px); font-weight: 750; line-height: 1.3; letter-spacing: -.045em; max-width: 15em; text-indent: 0; }
+  .pull .hang { display: inline-block; width: .5em; margin-left: -.5em; text-align: left; }
+  .pull figcaption { margin-top: 20px; font-size: 13px; font-weight: 600; color: var(--ink-3); }
+
+  /* ── (이전) 01 누구인가 ─────────────────────── */
   .who { grid-column: 2 / span 6; }
   .who h2 { font-size: clamp(44px, 6.4vw, 88px); font-weight: 750; line-height: 1.1; letter-spacing: -.05em; }
   .who .role { margin-top: 10px; font-size: 15px; font-weight: 600; color: var(--ink-2); }
@@ -98,7 +132,7 @@
   .who .prose p { color: var(--ink-2); line-height: 1.9; font-size: 16px; }
   .who .prose p + p { margin-top: 16px; }
   .who .credit { margin-top: 32px; }
-  .figrow { grid-column: 2 / span 11; margin-top: 56px; padding-top: 28px; }
+  .figrow { grid-column: 2 / span 11; margin-top: 120px; }
   .figrow h3 { font-size: 19px; font-weight: 700; letter-spacing: -.03em; margin-bottom: 18px; }
   .figrow .figs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: 24px; }
   .figrow .figs li { display: block; padding: 0 0 12px; }
@@ -106,7 +140,7 @@
   .figrow .figs span { display: block; margin-top: 8px; }
 
   /* ── 02 소개: 큰 인용 ───────────────────────── */
-  section.s { padding: 96px 0 0; }
+  section.s { padding: clamp(112px, 13vw, 184px) 0 0; }
   .quote { grid-column: 2 / span 7; position: relative; margin-top: 48px; padding-left: .2em; }
   .quote q { quotes: none; display: block; font-size: clamp(28px, 3.7vw, 46px); font-weight: 700; line-height: 1.32; letter-spacing: -.04em; color: var(--ink-2); }
   .quote .mk { font-family: Georgia, "Times New Roman", serif; font-weight: 700; font-size: 2.6em; line-height: 0; color: var(--ink); }
@@ -120,20 +154,39 @@
   .two .prose p { color: var(--ink-2); line-height: 1.85; }
   .two .prose p + p { margin-top: 14px; }
 
-  .figs li { display: grid; grid-template-columns: 112px 1fr; align-items: baseline; padding: 10px 0; border-bottom: 1px dotted var(--dot); }
+  .figs li { display: grid; grid-template-columns: 112px 1fr; align-items: baseline; padding: 10px 0; }
   .figs b { font-size: 28px; font-weight: 700; letter-spacing: -.04em; line-height: 1.1; }
   .figs span { font-size: 13px; color: var(--ink-2); }
   .note { font-size: 12px; color: var(--ink-3); margin-top: 10px; }
 
   /* ── 구획 머리 ──────────────────────────────── */
-  .s-h { grid-column: 2 / span 11; margin-top: 48px; margin-bottom: 32px; }
+  .s-h { grid-column: 2 / span 11; margin-top: 0; margin-bottom: 56px; }
   .s-h h2 { font-size: clamp(30px, 4vw, 48px); font-weight: 700; letter-spacing: -.04em; line-height: 1.2; }
   .s-h p { font-size: 13px; font-weight: 600; color: var(--ink-3); margin-top: 8px; }
   .body { grid-column: 2 / span 11; }
 
+  /* 인용 아래 — 관심 글이 이어진다 */
+  .pull-body { margin-top: 72px; padding-top: 0; display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 9fr); column-gap: 24px; }
+  .pull-body .kicker { font-size: 12px; font-weight: 700; letter-spacing: .02em; padding-top: 4px; }
+  .essay-cols { columns: 2; column-gap: 40px; column-rule: 1px dotted var(--dot); }
+  .essay-cols p { color: var(--ink-2); font-size: 15px; line-height: 1.9; letter-spacing: -.015em; }
+  .essay-cols p + p { margin-top: 14px; }
+
+  /* 일하는 방식 — 세 단 */
+  .howwrap { grid-column: 2 / span 11; padding-top: 0; }
+  .howwrap h3 { font-size: 19px; font-weight: 700; letter-spacing: -.03em; margin-bottom: 20px; }
+  .howwrap h3 { margin-bottom: 48px; }
+  /* 가로 막대 대신 세로 점선으로 칸을 나누고, 칸 안쪽에 숨 쉴 여백을 둔다 */
+  .howwrap .how { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 0; }
+  .howwrap .how li + li { margin-top: 0; border-left: 1px dotted var(--dot); }
+  .howwrap .how li { padding: 4px 40px 8px; }
+  .howwrap .how li:first-child { padding-left: 0; }
+  .howwrap .how li:last-child { padding-right: 0; }
+  .howwrap .how h4 { font-size: 16px; line-height: 1.5; margin-bottom: 14px; }
+
   /* ── 03 최근 작업 ────────────────────────────── */
   .recent { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 40px; }
-  .recent article { border-top: 1px dashed var(--ink-3); padding: 22px 0 32px; display: flex; flex-direction: column; }
+  .recent article { padding: 0 0 72px; display: flex; flex-direction: column; }
   .recent .lead { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: 40px; }
   .recent .lead > * { grid-column: 1; }
   .recent .lead .d, .recent .lead > a { grid-column: 2; }
@@ -152,11 +205,7 @@
   .how p { color: var(--ink-2); margin-top: 4px; line-height: 1.8; }
 
   /* ── 05 경력 ────────────────────────────────── */
-  .job { padding: 24px 0 26px; row-gap: 4px; position: relative; }
-  /* 점선은 둘째 단부터 — 위 구획들과 왼쪽 끝을 맞춘다 */
-  .job::before, .job:last-of-type::after { content: ""; position: absolute; right: 0; left: calc((100% - 264px) / 12 + 24px); border-top: 1px dashed var(--ink-3); }
-  .job::before { top: 0; }
-  .job:last-of-type::after { bottom: 0; }
+  .job { padding: 0 0 56px; row-gap: 4px; position: relative; }
   .job .when { grid-column: 2 / span 2; font-size: 13px; font-weight: 600; color: var(--ink-3); padding-top: 5px; }
   .job .main { grid-column: 4 / span 9; }
   .job h3 { font-size: 21px; font-weight: 700; letter-spacing: -.035em; line-height: 1.4; }
@@ -167,14 +216,14 @@
   .job li b { font-weight: 650; color: var(--ink); }
 
   /* ── 그 밖에 ─────────────────────────────────── */
-  .side { padding: 10px 0; border-bottom: 1px dotted var(--dot); font-size: 14px; }
+  .side { padding: 6px 0; font-size: 14px; }
   .side h3 { grid-column: 1 / span 3; font-size: 12px; font-weight: 600; color: var(--ink-3); padding-top: 2px; }
   .side div { grid-column: 4 / span 9; color: var(--ink-2); }
   .others { grid-template-columns: repeat(12, minmax(0, 1fr)); }
 
   /* ── 06 연락 ────────────────────────────────── */
-  .contact { position: relative; padding: 96px 0 72px; margin-top: 96px; }
-  .contact h2 { grid-column: 2 / span 10; font-size: clamp(44px, 7.2vw, 96px); font-weight: 700; letter-spacing: -.05em; line-height: 1.12; margin-top: 48px; }
+  .contact { position: relative; padding: clamp(112px, 13vw, 184px) 0 96px; margin-top: 0; }
+  .contact h2 { grid-column: 2 / span 10; font-size: clamp(44px, 7.2vw, 96px); font-weight: 700; letter-spacing: -.05em; line-height: 1.12; margin-top: 0; }
   .contact .msg { grid-column: 2 / span 4; margin-top: 120px; font-size: 13px; font-weight: 600; line-height: 1.65; }
   .contact .msg p + p { margin-top: 12px; }
   .contact .links { grid-column: 2 / span 5; margin-top: 40px; display: grid; gap: 8px; font-size: 13px; font-weight: 600; }
@@ -189,16 +238,27 @@
   @media (max-width: 860px) {
     .grid { grid-template-columns: minmax(0, 1fr); }
     .margin-dots, .lined-empty, .vert { display: none; }
+    .bar { margin-left: 0; }
     .hello { min-height: 72svh; }
     .hello h1 { margin-left: 0; }
     .hello .cite { margin-left: 0; }
     .ticks { display: none; }
-    .who, .figrow, .top .name, .top .act, .toc, .toc-note, .cover .lined, .credit, .quote, .two, .s-h, .body, .job .when, .job .main, .side h3, .side div, .contact h2, .contact .msg, .contact .links, .stamp { grid-column: 1; }
+    .who-head, .standfirst, .columns, .sidebar, .pull, .who, .figrow, .top .name, .top .act, .toc, .toc-note, .cover .lined, .credit, .quote, .two, .s-h, .body, .job .when, .job .main, .side h3, .side div, .contact h2, .contact .msg, .contact .links, .stamp { grid-column: 1; }
     .top .grid { grid-template-columns: auto 1fr; }
     .top .act { grid-column: 2; }
     .cover .lined { margin-top: 40px; }
     .credit { margin-top: 48px; }
     .figrow .figs { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 20px; }
+    .columns, .essay-cols { columns: 1; }
+    .pull-body, .howwrap .how { grid-template-columns: minmax(0, 1fr); row-gap: 24px; }
+    .howwrap .how li, .howwrap .how li:first-child, .howwrap .how li:last-child { padding: 0; }
+    .howwrap .how li + li { border-left: 0; padding-top: 32px; }
+    .howwrap { grid-column: 1; }
+    .sumrow { grid-column: 1; grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 28px; margin-top: 64px; }
+    .who-head .role { text-align: left; }
+    .who-head { grid-template-columns: minmax(0, 1fr); }
+    .who-head .role { padding-bottom: 0; margin-top: 10px; }
+    .pull .hang { margin-left: 0; width: auto; }
     .quote { padding-left: 0; margin-top: 40px; }
     .quote .open { position: static; display: block; height: .45em; }
     .two, .recent, .recent .lead { grid-template-columns: minmax(0, 1fr); }
@@ -220,7 +280,16 @@
     .wrap { max-width: none; padding: 0; }
     .cover { padding: 0; }
     .cover .grid { margin-top: 0; }
-    .cover .lined, .who, .figrow { grid-column: 1 / -1; }
+    .howwrap, .cover .lined, .who, .figrow, .who-head, .standfirst, .columns, .pull { grid-column: 1 / -1; }
+    .sumrow { grid-column: 1 / -1; margin-top: 10px; column-gap: 12px; }
+    .sumrow dt { font-size: 9pt; margin-bottom: 2px; }
+    .sumrow dd { font-size: 8.5pt; line-height: 1.5; }
+    .who-head h2 { font-size: 22pt; }
+    .standfirst { font-size: 12pt; margin-top: 8px; }
+    .columns { margin-top: 8px; padding-top: 8px; }
+    .columns p { font-size: 9.5pt; line-height: 1.6; }
+    .pull { padding: 10px 0; }
+    .pull blockquote p { font-size: 14pt; }
     .who h2 { font-size: 22pt; }
     .who .prose { margin-top: 8px; }
     .who .prose p { font-size: 9.5pt; line-height: 1.6; }
@@ -285,23 +354,24 @@
   <section class="cover" id="about">
     <div class="wrap">
       <div class="bar"></div>
-      <div class="grid">
-        <div class="margin-dots" aria-hidden="true"></div>
-        <div class="who">
+      <div class="grid who-grid">
+        <header class="who-head">
+          <p class="kicker">소개</p>
           <h2>최석준.</h2>
-          <p class="role">Product Owner · (주)구름</p>
-          <div class="prose">
-            <p>처음 맡은 일은 쇼핑몰에 상품을 올리는 것이었습니다. 별로 대단할 것 없는 일이었습니다. 사진을 고르고, 설명을 쓰고, 가격을 매겼습니다. 그런데 같은 물건이 다른 곳에서는 얼마에 팔리는지가 이상하게 신경 쓰였습니다. 그게 궁금해서 프로그램을 짰고, 한참 뒤에는 타오바오와 아마존을 실시간으로 뒤지는 검색엔진을 만들고 있었습니다. 그렇게 모인 데이터가 2년 치쯤 쌓이자 이번에는 그걸 읽어 낼 분석 시스템이 필요해졌고, 그 일도 제가 맡게 되었습니다.</p>
-            <p>그 뒤로도 대체로 비슷했습니다. 비투링크에서는 국내 뷰티 브랜드 가운데 될 만한 것을 골라 여러 나라에 자리 잡게 하는 일을 했습니다. 한 번 보내는 것과 끊기지 않고 계속 보내는 것은 꽤 다른 일이어서, 그 사이를 잇는 SCM을 기획하고 운영하는 일을 맡았습니다. 베트남 수출을 맡던 무렵에는 국내 쿠팡 운영에 드는 손을 덜어 보려고 자동화 도구를 만들었습니다. 일이 막히면 프로그램을 짰고, 그 프로그램은 또 다른 일로 이어졌습니다. 지금은 (주)구름에서 AI 개발 도구와 에듀테크 제품을 만들고 있습니다. 하는 일의 모양은 그때와 크게 다르지 않습니다. 다루는 문제가 조금 커졌을 뿐입니다.</p>
-          </div>
-          <p class="credit"><a href="mailto:12k4@naver.com">12k4@naver.com</a><br><a href="https://github.com/choisukjune">github.com/choisukjune</a></p>
+          <p class="role">Product Owner · (주)구름<br><span class="hc"><a href="mailto:12k4@naver.com">12k4@naver.com</a> · <a href="https://github.com/choisukjune">github.com/choisukjune</a></span></p>
+        </header>
+        <p class="standfirst">처음 맡은 일은 쇼핑몰에 상품을 올리는 것이었습니다. 별로 대단할 것 없는 일이었습니다.</p>
+        <div class="columns">
+          <p>같은 물건이 다른 곳에서는 얼마에 팔리는지가 이상하게 신경 쓰였습니다. 그게 궁금해서 프로그램을 짰고, 한참 뒤에는 타오바오와 아마존을 실시간으로 뒤지는 검색엔진과, 거기 쌓인 데이터를 읽어 내는 분석 시스템을 만들고 있었습니다.</p>
+          <p>그 뒤로도 비슷했습니다. 될 만한 국내 뷰티 브랜드를 골라 여러 나라에 자리 잡게 했고, 끊기지 않고 보내기 위해 SCM을 기획하고 운영했습니다. 손이 모자라면 쿠팡 자동화 도구를 짰습니다. 지금은 (주)구름에서 AI 개발 도구와 에듀테크 제품을 만듭니다.</p>
+          <p>일을 하다 보니 더하는 것보다 덜어 내는 쪽이 늘 어려웠습니다. 그래서 요즘 가장 자주 꺼내 보는 말은 디터 람스의 「더 적게, 그러나 더 좋게」입니다.</p>
         </div>
-        <ul class="lined" aria-label="요약">
-            <li><b>AI 제품</b> 바이브코딩 IDE Arkain 기획부터 런칭까지 주도.</li>
-            <li><b>직접 만든 것</b> 하루 30만 건 크롤링과 빅데이터 분석 시스템, 쿠팡 운영 자동화, B2B 플랫폼 API 서버.</li>
-            <li><b>해외 사업</b> 국내 뷰티 브랜드의 해외 랜딩과 SCM 기획 · 운영, 중국(10개 이상 플랫폼) · 베트남 진출 실행과 총괄.</li>
-            <li><b>함께 일한 곳</b> 카카오 그룹 다부문 협력 PM, LG전자 · 일본 사이버대학 B2B, 정부사업 디지털새싹 수주.</li>
-        </ul>
+        <dl class="sumrow" aria-label="요약">
+          <div><dt>AI 제품</dt><dd>Arkain 기획&nbsp;· 런칭 주도</dd></div>
+          <div><dt>직접 만든 것</dt><dd>크롤러(하루 30만 건)&nbsp;· 빅데이터 분석&nbsp;· 쿠팡 자동화&nbsp;· B2B API 서버</dd></div>
+          <div><dt>해외 사업</dt><dd>뷰티 브랜드 해외 랜딩&nbsp;· SCM&nbsp;· 중국 10+ 플랫폼&nbsp;· 베트남</dd></div>
+          <div><dt>함께 일한 곳</dt><dd>카카오 그룹&nbsp;· LG전자&nbsp;· 일본 사이버대학&nbsp;· 디지털새싹</dd></div>
+        </dl>
       </div>
     </div>
   </section>
@@ -309,15 +379,20 @@
   <!-- 02 인용 · 수치 -->
   <section class="s" id="figures">
     <div class="wrap">
-      <div class="bar"></div>
       <div class="grid">
-        <div class="margin-dots" aria-hidden="true"></div>
-        <blockquote class="quote">
-          <span class="mk open" aria-hidden="true">“</span>
-          <q>아무것도 없는 상태가 예전만큼 무섭지는 않습니다.<span class="mk close" aria-hidden="true">”</span></q>
-        </blockquote>
-        <div class="lined-empty" aria-hidden="true"></div>
-        <div class="figrow dash">
+        <figure class="pull">
+          <blockquote><p><span class="hang" aria-hidden="true">“</span>기능을 하나 더 넣기 전에, 하나를 뺄 수 있는지부터 봅니다.”</p></blockquote>
+          <figcaption>— 더 적게, 그러나 더 좋게</figcaption>
+          <div class="pull-body">
+            <p class="kicker">관심</p>
+            <div class="essay-cols">
+              <p>오래 써도 질리지 않는 도구를 좋아합니다. 처음 손에 쥐었을 때는 별것 아닌 것 같은데, 몇 년이 지나도 자꾸 손이 가는 것. 람스가 말한 「더 좋게」는 아마 그런 물건을 두고 한 이야기였을 겁니다.</p>
+              <p>요즘은 AI가 사람이 일하는 방식을 어떻게 바꿀지에 관심이 많습니다. 개인적으로는 화려한 새 기능보다 원래 하던 일에 슬쩍 끼어드는 쪽이 오래 남을 거라고 봅니다. 문서를 열고, 고치고, 보내는, 그런 평범한 일들 사이 말입니다. 물론 틀릴 수도 있습니다. 그래서 INDIFF를 직접 만들어 보고 있습니다.</p>
+              <p>커머스와 데이터에는 여전히 마음이 갑니다. 커머스는 처음 일을 배운 곳이고, 데이터는 대체로 거짓말을 하지 않으니까요.</p>
+            </div>
+          </div>
+        </figure>
+        <div class="figrow">
           <h3>수치</h3>
           <ul class="figs">
             <li><b>192만</b><span>Arkain 사용자 · 157개국</span></li>
@@ -370,12 +445,12 @@
     </div>
   </section>
 
-  <!-- 04 일하는 방식 · 관심 -->
+  <!-- 04 일하는 방식 -->
   <section class="s" id="how">
     <div class="wrap">
       <div class="bar"></div>
       <div class="grid">
-        <div class="two dash">
+        <div class="howwrap">
           <div>
             <h3>일하는 방식</h3>
             <ul class="how">
@@ -383,12 +458,6 @@
           <li><h4>AI는 GPT-3 때부터 써 왔습니다</h4><p>그때는 지금처럼 잘 되지 않았습니다. 엉뚱한 대답도 자주 했고요. 그래도 매일 붙잡고 있다 보니 어디까지 맡겨도 되는지 감이 생겼고, Cursor, Lovable, Replit 같은 도구를 하나씩 만져 보며 Arkain의 방향을 다듬어 왔습니다. 프롬프트는 지금도 기획서의 한 장이라고 생각하고 씁니다.</p></li>
           <li><h4>없던 것을 만드는 일을 자주 맡았습니다</h4><p>온라인사업부가 없던 회사에 사업부를 만들었고, 커머스 플랫폼을 맨땅에서 열었습니다. 해외 채널도 직접 찾아 나섰습니다. Arkain도 빈 문서 한 장에서 시작했습니다. 운이 좋았던 건지 나빴던 건지는 잘 모르겠습니다. 다만 그 덕분에 아무것도 없는 상태가 예전만큼 무섭지는 않습니다.</p></li>
             </ul>
-          </div>
-          <div class="prose">
-            <h3>관심</h3>
-          <p>오래 써도 질리지 않는 도구를 좋아합니다. 처음 손에 쥐었을 때는 별것 아닌 것 같은데, 몇 년이 지나도 자꾸 손이 가는 것. 디터 람스의 「더 적게, 그러나 더 좋게」를 읽었을 때, 아마 이런 걸 두고 한 이야기겠구나 하고 생각했습니다.</p>
-          <p>요즘은 AI가 사람이 일하는 방식을 어떻게 바꿀지에 관심이 많습니다. 개인적으로는 화려한 새 기능보다 원래 하던 일에 슬쩍 끼어드는 쪽이 오래 남을 거라고 봅니다. 문서를 열고, 고치고, 보내는, 그런 평범한 일들 사이 말입니다. 물론 틀릴 수도 있습니다. 그래서 INDIFF를 직접 만들어 보고 있습니다.</p>
-          <p>커머스와 데이터에는 여전히 마음이 갑니다. 커머스는 처음 일을 배운 곳이고, 데이터는 대체로 거짓말을 하지 않으니까요.</p>
           </div>
         </div>
       </div>
