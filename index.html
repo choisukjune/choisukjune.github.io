@@ -63,15 +63,11 @@
   .top .act a, .top .act button { color: var(--ink-2); text-decoration: none; font: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
   .top .act a:hover, .top .act button:hover { color: var(--ink); }
 
-  /* ── 00 인사: 뒷장이 비쳐 보이는 첫 장 ───────────── */
+  /* ── 00 인사 ──────────────────────────────── */
   .hello { position: relative; min-height: min(86svh, 820px); overflow: hidden; display: flex; align-items: center; }
   .hello .wrap { width: 100%; }
   .hello .bar { position: absolute; top: 40px; left: 50%; transform: translateX(-50%); }
   .hello h1 { position: relative; z-index: 1; margin-left: 36%; font-size: clamp(56px, 8.6vw, 124px); font-weight: 750; line-height: 1.08; letter-spacing: -.05em; }
-  /* 뒷장 — 좌우가 뒤집힌 채 희미하게 비친다 */
-  .ghost { position: absolute; right: var(--gut); top: 50%; transform: translateY(-58%) scaleX(-1); text-align: left; color: var(--ink); opacity: .085; pointer-events: none; user-select: none; }
-  .ghost li { font-size: clamp(30px, 4.4vw, 54px); font-weight: 700; line-height: 1.22; letter-spacing: -.04em; }
-  .ghost p { margin-top: 28px; font-size: 13px; font-weight: 600; }
   .ticks { position: absolute; left: var(--gut); top: 0; bottom: 0; width: 64px; pointer-events: none; }
   .ticks i { position: absolute; left: 0; width: 64px; height: 1.5px; background: var(--ink); }
   .ticks i:nth-child(1) { top: 18%; }
@@ -179,7 +175,6 @@
     .margin-dots, .lined-empty, .vert { display: none; }
     .hello { min-height: 72svh; }
     .hello h1 { margin-left: 0; }
-    .ghost { right: auto; left: 40%; transform: translateY(-40%) scaleX(-1); }
     .ticks { display: none; }
     .top .name, .top .act, .toc, .toc-note, .cover .lined, .credit, .quote, .two, .s-h, .body, .job .when, .job .main, .side h3, .side div, .contact h2, .contact .msg, .contact .links, .stamp { grid-column: 1; }
     .top .grid { grid-template-columns: auto 1fr; }
@@ -259,10 +254,6 @@
   <section class="hello" aria-label="인사">
     <div class="bar"></div>
     <div class="ticks" aria-hidden="true"><i></i><i></i><span>기획 / 개발 / 사업</span></div>
-    <div class="ghost" aria-hidden="true">
-      <ol><li>소개</li><li>최근 작업</li><li>일하는 방식</li><li>경력</li><li>연락</li></ol>
-      <p>천천히 둘러보세요.</p>
-    </div>
     <div class="wrap"><h1>아,<br>오셨군요.</h1></div>
   </section>
 
